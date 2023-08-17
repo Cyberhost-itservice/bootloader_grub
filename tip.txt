@@ -1,0 +1,2 @@
+1. Start the device from a LiveSystem Ubuntu
+2. fdisk -l 
