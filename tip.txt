@@ -1,2 +1,15 @@
 1. Start the device from a LiveSystem Ubuntu
-2. fdisk -l 
+2. fdisk -l zeigt die Festplatten an ( sdsa / sdb or nvmen1 )
+3. Mounten das LinuxRootPArtition to mnt : example: mount /dev/nvmen1p3 /mnt
+4. Mounten der Bootpartition to /mnt/boot : example: mount /dev/nvmen1p2 /mnt/boot
+5. Mounten der EFI Partition ( UEFI ) to /mnt/efi : example: mount /dev/nvmen1p1 /mnt/efi
+6. Vorbereitung und Wechsel in die chroot-Umgebung:
+sudo mount -o bind /dev /mnt/dev 
+sudo mount -o bind /sys /mnt/sys 
+sudo mount -t proc /proc /mnt/proc 
+sudo cp /proc/mounts /mnt/etc/mtab 
+sudo chroot /mnt /bin/bash 
+7. In Chroot Umgebung :
+grub-install 
+update-grub 
+8 . Exit the Chroot umgebung und rebopot dein System
